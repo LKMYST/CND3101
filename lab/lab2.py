@@ -139,9 +139,9 @@ for i in range(6):
     print('*' * i)
 
 # question 10
-list = ["apple", "banana", "cherry", "durian"]
+item_list = ["apple", "banana", "cherry", "durian"]
 sum = ""
-for item in list:
+for item in item_list:
     sum += item
 print(sum)
 
@@ -234,5 +234,60 @@ def question_1(num1, num2):
     return num1 + num2
 
 # question 2
+from math import sqrt
 def question_2(number):
-    return 
+    i = 2
+    while i < sqrt(number):
+        if number % i == 0:
+            return False
+        i += 1
+    else:
+        return True
+    
+# question 3
+def question_3(number):
+    result = 1
+    i = 1
+    while i <= number:
+        result *= i
+        i += 1
+    return result
+
+# question 4
+def question_4(string):
+    return string[::-1]
+
+# question 5
+def question_5(number):
+    if number % 2 == 0:
+        print("The number is even. ")
+    else:
+        print("The number is odd. ")
+
+# question 6
+from math import pi
+def question_6(radius):
+    return pi * radius ** 2
+
+# question 7
+def question_7(celsius):
+    return celsius * 1.8 + 32
+
+# question 8
+def question_8(string):
+    count = 0
+    for ch in string.lower():
+        if ch in "aeiou":
+            count += 1
+    return count
+
+# question 9
+def question_9(num1, num2, num3):
+    return max(num1, num2, num3)
+
+# question 10
+def question_10(number_list):
+    sum = 0
+    for number in number_list:
+        sum += number
+    return sum
