@@ -162,6 +162,77 @@ while i < len(number):
 print(sum)
 
 # question 3
-number = input()
+number = input("Please enter a number: ")
+result = ""
+i = 0
+while i < len(number):
+    result = number[i] + result
+    i += 1
+print(result)
+
+# question 4
+i = 1
+while i * 7 <= 100:
+    print(i * 7)
+    i += 1
+
+# question 5
+number = input("Please enter a number: ")
+while not number == "0":
+    number = input("Please enter a number: ")
+
+# question 6
+number = input("Please enter a number: ")
+digit = int(number[0])
+i = 1
+while i < len(number):
+    digit = max(digit, int(number[i]))
+    i += 1
+print(digit)
+
+# question 7
+a, b = map(int, input("Please enter two numbers: ").split())
+
+if a < b:
+    a, b = b, a
+
+remainder = 1
+while not remainder == 0:
+    remainder = a % b
+    a = b
+    b = remainder
+print(f"The GCD of input is {a}. ")
+
+# question 8
+number = int(input("Please enter a number: "))
+i = 0
+while i * i <= number:
+    if i * i == number:
+        print("Perfect Square")
+        break
+    i += 1
+else:
+    print("Not perfect square")
+
+# question 9
+user_input = input()
+while not user_input == "exit":
+    user_input = input()
+
+# question 10
+number = int(input("Please enter a number: "))
+i = 0
+result = 0
+while i <= number:
+    result += i
+    i += 2
+print(f"Result = {result}")
 
 # ============= PART 4 =============
+# question 1
+def question_1(num1, num2):
+    return num1 + num2
+
+# question 2
+def question_2(number):
+    return 
