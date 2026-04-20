@@ -62,8 +62,13 @@ print(output)
 # ===== question 6 =====
 text = "Anna saw a radar and met Hannah at noon."
 
-words = re.findall(r"\w\w+", text)  # abort single alphabet
-output = [w for w in words if w[0].lower() == w[len(w) - 1].lower()]
+# v1.0
+# words = re.findall(r"\w\w+", text)  # abort single alphabet
+# output = [w for w in words if w[0].lower() == w[len(w) - 1].lower()]
+
+# v2.0 simpler
+valid_word_regex = re.compile(r"\b((\w)\w+\2)\b", re.IGNORECASE)
+output = [w[0] for w in valid_word_regex.findall(text)]
 
 print(output)
 
