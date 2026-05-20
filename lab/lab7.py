@@ -7,11 +7,13 @@ random_integers = np.random.randint(1, high=500000, size=(20, 5))
 
 
 # ===== Exercise 2 =====
-random_integers[:, 1].mean()    # 214895.8
+random_integers[:, 1].mean()
+# 214895.8
 
 
 # ===== Exercise 3 =====
-random_integers[:5, 2:4].mean() # 286058.5
+random_integers[:5, 2:4].mean()
+# 286058.5
 
 
 # ===== Exercise 4 =====
@@ -91,3 +93,48 @@ my_slice = my_array[:, 1:3]
 my_array[:, :] = my_array * 2
 # my_slice: [[4 6]
 #            [10 12]]
+
+
+# ===== Exercise 9 =====
+my_array = my_array * 2
+# my_slice: [[4 6]
+#            [10 12]]
+
+
+# ===== Exercise 10 =====
+# checked Exercise 7, 8, 9
+
+
+# ===== Exercise 11 =====
+my_array = np.array([[1, 2, 3], [4, 5, 6]])
+print(my_array)
+# [18]: [[1 2 3]
+#        [4 5 6]]
+
+my_slice = my_array[:, 1:3].copy()
+print(my_slice)
+# [19]: [[2 3]
+#        [5 6]]
+
+my_array[:, :] = my_array * 2
+# my_slice: [[2 3]
+#            [5 6]]
+
+my_array = np.array([1, 2, 3])
+my_slice = my_array[1:3]
+my_slice.base is my_array
+# [20]: True
+
+my_array = np.array([1, 2, 3])
+my_array = my_array[1:4]
+my_slice = my_array[1:3]
+my_slice.base is my_array
+# [21]: False
+# [22]: [3]
+# [23]: [2 3]
+
+my_slice[0] = -1
+# [24]: [2 -1]
+
+my_slice.base is my_array.base
+# [25]: True
