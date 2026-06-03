@@ -1,6 +1,4 @@
-# ===== Question 1 =====
 import math
-import os
 
 def calculator(num1, num2, operator):
     if operator == "+":
@@ -29,22 +27,3 @@ while True:
     num1, num2 = float(num1), float(num2)
 
     print("Result: ", calculator(num1, num2, operator))
-
-
-
-# ===== Question 2 =====
-file_path = "./lab8.txt"
-
-if not os.path.exists(file_path):
-    with open(file_path, "w") as file:
-        file.write("New file created. \n")
-        print("File created. ")
-
-with open(file_path, "a") as file:
-    file.write("Appending new line. \n")
-    print("File appended. ")
-
-
-
-# ===== Question 3 =====
-
