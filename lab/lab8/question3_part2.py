@@ -1,16 +1,40 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from matplotlib.patches import PathPatch
-from matplotlib.path import Path
 
-N = 400
-t = np.linspace(0, 2 * np.pi, N)
-r = 0.5 + np.cos(t)
-x, y = r * np.cos(t), r * np.sin(t)
+def koch_snowflake(order, scale=10):
+    def _koch_snowflake_complex(order):
+        if order == 0:
+            # initial triangle
+            # angles = np.array([0, 120, 240]) + 90   # Original rotation
+            angles = np.array([0, 120, 240])    # Modified rotation
+            return scale / np.sqrt(3) * np.exp(np.deg2rad(angles) * 1j)
+        else:
+            ZR = 0.5 - 0.5j * np.sqrt(3) / 3
 
-fig, ax = plt.subplots()
-ax.plot(x, y, "k")
-ax.set(aspect=1)
+            p1 = _koch_snowflake_complex(order - 1)  # start points
+            p2 = np.roll(p1, shift=-1)  # end points
+            dp = p2 - p1  # connection vectors
 
+            new_points = np.empty(len(p1) * 4, dtype=np.complex128)
+            new_points[::4] = p1
+            new_points[1::4] = p1 + dp / 3
+            new_points[2::4] = p1 + dp * ZR
+            new_points[3::4] = p1 + dp / 3 * 2
+            return new_points
+
+    points = _koch_snowflake_complex(order)
+    x, y = points.real, points.imag
+    return x, y
+
+# x, y = koch_snowflake(order=5)  # Original pattern
+# x, y = koch_snowflake(order=0)  # Triangle
+x, y = koch_snowflake(order=3)  # Basic snowflake
+
+
+
+plt.figure(figsize=(8, 8))
+plt.axis('equal')
+# plt.fill(x, y)  # Original color
+plt.fill(x, y, color="royalblue", alpha=0.8)    # Modified color
 plt.show()
